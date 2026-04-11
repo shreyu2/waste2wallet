@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Outfit', sans-serif;
+  --color-sustainability-700: #047857;
+  --color-sustainability-800: #065f46;
+  --color-sustainability-900: #064e3b;
+}
+
+@layer base {
+  body {
+    @apply bg-sustainability-900 text-white font-sans overflow-x-hidden min-h-screen text-slate-100;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] rounded-2xl relative overflow-hidden;
+  }
+  
+  .glass-panel::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-50 pointer-events-none;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 20px rgba(167, 243, 208, 0.4);
+  }
+
+  .glass-input {
+    @apply bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500/50 transition-all;
+  }
+  
+  .glass-button {
+    @apply relative overflow-hidden rounded-xl font-medium transition-all duration-300;
+  }
+  
+  .glass-button-primary {
+    @apply bg-emerald-600 hover:bg-emerald-500 text-white shadow-[0_0_15px_rgba(5,150,105,0.4)] hover:shadow-[0_0_25px_rgba(16,185,129,0.6)];
+  }
+
+  .glass-button-secondary {
+    @apply bg-white/10 hover:bg-white/15 text-white border border-white/10 backdrop-blur-md;
+  }
+}
