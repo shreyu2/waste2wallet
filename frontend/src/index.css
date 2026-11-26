@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Outfit', sans-serif;
+
+  /* ── Waste2Wallet Blue Theme Tokens ────────────────────────── */
+  --color-w2w-navy: #102D65;
+  --color-w2w-navy-dark: #0B1F46;
+  --color-w2w-navy-secondary: #174A89;
+  --color-w2w-blue: #147BD1;
+  --color-w2w-button: #1683DC;
+  --color-w2w-cyan: #48B9F5;
+  --color-w2w-light-blue: #EAF4FF;
+  --color-w2w-text: #26364B;
+  --color-w2w-placeholder: #8A9AAF;
+  --color-w2w-border: #DCE5F0;
+  --color-w2w-input-bg: #F5F8FC;
+
+  /* Fallback aliases for sustainability theme mapped to blue palette */
+  --color-sustainability-700: #174A89;
+  --color-sustainability-800: #102D65;
+  --color-sustainability-900: #0B1F46;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-w2w-navy-dark);
+    color: #FFFFFF;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+}
+
+@layer utilities {
+  /* ── Shared page background for public and main screens ──── */
+  .w2w-page-bg {
+    background: linear-gradient(135deg, #07132c 0%, #0B1F46 35%, #102D65 70%, #174A89 100%);
+  }
+
+  .glass-panel {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.35)] rounded-2xl relative overflow-hidden;
+  }
+  
+  .glass-panel::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-50 pointer-events-none;
+  }
+
+  /* ── Blue-tinted card for dashboards & public pages ──────── */
+  .w2w-card {
+    @apply backdrop-blur-xl rounded-2xl relative overflow-hidden transition-all duration-300;
+    background: rgba(16, 45, 101, 0.25);
+    border: 1px solid rgba(72, 185, 245, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  }
+  .w2w-card::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-br from-[#147BD1]/10 to-transparent opacity-40 pointer-events-none;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 20px rgba(72, 185, 245, 0.5);
+  }
+
+  .glass-input {
+    @apply bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-[#147BD1]/60 focus:border-[#147BD1]/60 transition-all;
+  }
+
+  /* ── Auth-specific input (blue theme, white card) ────────── */
+  .auth-input {
+    @apply rounded-xl py-3 text-sm transition-all duration-200;
+    padding-left: 2.75rem;    /* 44px — clears the left icon */
+    padding-right: 1rem;      /* 16px default; overridden on password field via pr-12 */
+    color: var(--color-w2w-text);
+    background: var(--color-w2w-input-bg);
+    border: 1.5px solid var(--color-w2w-border);
+  }
+  .auth-input::placeholder {
+    color: var(--color-w2w-placeholder);
+  }
+  .auth-input:focus {
+    outline: none;
+    border-color: var(--color-w2w-blue);
+    box-shadow: 0 0 0 3px rgba(20, 123, 209, 0.15);
+    background: #FFFFFF;
+  }
+  
+  .glass-button {
+    @apply relative overflow-hidden rounded-xl font-medium transition-all duration-300;
+  }
+  
+  .glass-button-primary {
+    background: var(--color-w2w-button);
+    box-shadow: 0 0 15px rgba(22, 131, 220, 0.4);
+    @apply hover:shadow-[0_0_25px_rgba(20,123,209,0.6)] text-white;
+  }
+  .glass-button-primary:hover {
+    background: var(--color-w2w-blue);
+  }
+
+  .glass-button-secondary {
+    @apply bg-white/10 hover:bg-white/15 text-white border border-white/10 backdrop-blur-md;
+  }
+}

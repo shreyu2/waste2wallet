@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.env
+*.local
+.vscode/
+*.DS_Store
+*.backup
+package-lock.json.bak
